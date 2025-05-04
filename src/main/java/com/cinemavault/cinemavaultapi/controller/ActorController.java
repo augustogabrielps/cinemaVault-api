@@ -2,12 +2,9 @@ package com.cinemavault.cinemavaultapi.controller;
 
 import com.cinemavault.cinemavaultapi.model.Actor;
 import com.cinemavault.cinemavaultapi.service.ActorService;
-import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;  // ✅ CORRECT
 import org.springframework.web.bind.annotation.*;
-
-import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -21,9 +18,8 @@ public class ActorController {
     }
 
     @GetMapping("/actors")
-    public List<Actor> getAllActors() {
-
-        return actorService.getAllActors();
+    public Page<Actor> getAllActors(Pageable pageable) {
+        return actorService.getAllActors(pageable);
     }
 
     @GetMapping("/actors/{id}")

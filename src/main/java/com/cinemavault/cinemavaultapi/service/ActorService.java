@@ -2,9 +2,9 @@ package com.cinemavault.cinemavaultapi.service;
 
 import com.cinemavault.cinemavaultapi.model.Actor;
 import com.cinemavault.cinemavaultapi.repository.ActorRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -16,8 +16,8 @@ public class ActorService {
         this.actorRepository = actorRepository;
     }
 
-    public List<Actor> getAllActors() {
-        return actorRepository.findAll();
+    public Page<Actor> getAllActors(Pageable pageable) {
+        return actorRepository.findAll(pageable);
     }
 
     public Actor getActorsById(Long id) {

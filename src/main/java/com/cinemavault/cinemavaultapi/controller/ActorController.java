@@ -3,8 +3,11 @@ package com.cinemavault.cinemavaultapi.controller;
 import com.cinemavault.cinemavaultapi.model.Actor;
 import com.cinemavault.cinemavaultapi.service.ActorService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -29,8 +32,27 @@ public class ActorController {
     }
 
     @GetMapping("/actors/search")
-        public List<Actor> getActorByFirstName(@RequestParam String firstName) {
-            return actorService.getActorByFirstName(firstName);
-        }
+    public List<Actor> getActorByFirstName(@RequestParam String firstName) {
+        return actorService.getActorByFirstName(firstName);
     }
 
+    @GetMapping("/actors/search/fullname")
+    public List<Actor> getActorByFirstAndLastNames(
+            @RequestParam String firstName,
+            @RequestParam String lastName
+    ) {
+        var result = actorService.getActorByFirstAndLastNames(firstName, lastName);
+        if (result.isEmpty()) {
+            System.out.println("Name was not found");
+        }
+        return result;
+    }
+
+    @GetMapping("/actors/search/firstname")
+    public List<Actor> getActorsByFirstNameContaining(
+            @RequestParam String firstName
+    ) {
+        var result = actorService.findByFirstNameContainingIgnoreCase(firstName);
+        return result;
+    }
+}

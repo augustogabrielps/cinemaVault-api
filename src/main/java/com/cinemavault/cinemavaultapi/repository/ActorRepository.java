@@ -9,4 +9,7 @@ import java.util.List;
 @Repository
 public interface ActorRepository extends JpaRepository<Actor, Long> {
     List<Actor> findByFirstName(String firstName);
+    List<Actor> findByFirstNameAndLastName(String firstName, String lastName);
+    List<Actor> findByFirstNameContainingIgnoreCase(String firstName);
+
 }

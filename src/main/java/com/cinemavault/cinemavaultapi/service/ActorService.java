@@ -29,4 +29,13 @@ public class ActorService {
         return actorRepository.findByFirstName(firstName);
     }
 
+    public List<Actor> getActorByFirstAndLastNames(String firstName, String lastName){
+        return actorRepository.findByFirstNameAndLastName(firstName, lastName);
+    }
+
+    public List<Actor> findByFirstNameContainingIgnoreCase(String firstName){
+        return actorRepository.findByFirstNameContainingIgnoreCase(firstName);
+    }
+
+
 }

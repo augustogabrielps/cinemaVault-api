@@ -4,6 +4,7 @@ import com.cinemavault.cinemavaultapi.model.Actor;
 import com.cinemavault.cinemavaultapi.service.ActorService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;  // ✅ CORRECT
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 

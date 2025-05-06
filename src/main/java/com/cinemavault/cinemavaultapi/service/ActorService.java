@@ -1,5 +1,6 @@
 package com.cinemavault.cinemavaultapi.service;
 
+import com.cinemavault.cinemavaultapi.exception.ActorNotFoundException;
 import com.cinemavault.cinemavaultapi.model.Actor;
 import com.cinemavault.cinemavaultapi.repository.ActorRepository;
 import org.springframework.data.domain.Page;
@@ -22,7 +23,7 @@ public class ActorService {
 
     public Actor getActorsById(Long id) {
         return actorRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Actor not found with ID: " + id));
+                .orElseThrow(() -> new ActorNotFoundException(id));
     }
 
     public List<Actor> getActorByFirstName(String firstName){

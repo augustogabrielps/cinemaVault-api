@@ -38,5 +38,9 @@ public class ActorService {
         return actorRepository.findByFirstNameContainingIgnoreCase(firstName);
     }
 
+    public List<Actor> findByPartialNameContainingIgnoreCase(String lastName){
+        return actorRepository.findByLastNameContainingIgnoreCase(lastName);
+    }
+
 
 }

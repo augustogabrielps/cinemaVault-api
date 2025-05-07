@@ -52,4 +52,11 @@ public class ActorController {
         var result = actorService.findByFirstNameContainingIgnoreCase(firstName);
         return result;
     }
+
+    @GetMapping("/actors/search/lastname")
+    public List<Actor> getActorsByLastNameContaining(
+            @RequestParam String lastName){
+        return actorService.findByPartialNameContainingIgnoreCase(lastName);
+    }
+
 }
